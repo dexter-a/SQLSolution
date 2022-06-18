@@ -15,6 +15,10 @@ INNER JOIN dbo.OrderItem OI
 	ON OI.OrderId = O.OrderId
 INNER JOIN dbo.Product P
 	ON P.ProductId = OI.ProductId
+INNER JOIN dbo.Customer C
+	ON C.CustomerId = O.CustomerId
+WHERE 
+	C.[State] = 'TX'
 GROUP BY 
 	P.ProductId,P.ProductName
 HAVING SUM(OI.Quantity) > 10
